@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+// Valósítsd meg az int kozos(int a, int b) függvényt, ami a közös osztók számát adja vissza!
+
+int kozos (int a, int b)
+{
+    int sum = 0;
+    for (int i=1; i<=a && i<=b; i++)
+    {
+        if (a % i == 0 && b % i == 0)
+        {
+            sum += 1;
+        }
+    }
+    return sum;
+}
+
+int main()
+{
+    int a, b;
+    cin >> a;
+    cin >> b;
+    int kosz = kozos (a, b);
+    cout << endl << kosz;
+    return 0;
+}

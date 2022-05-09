@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+// 6.3) Valósítsd meg a bool tokeletes(int a) függvényt, ami visszaadja, hogy a paraméterül kapott érték tökéletes szám-e.
+
+bool tokeletes (int a)
+{
+    int sum = 0;
+    for (int i=1; i<a; i++)
+    {
+        if (a % i == 0)
+        {
+            sum += i;
+        }
+    }
+
+    return sum == a;
+}
+
+int main()
+{
+    int a;
+    cin >> a;
+    if (tokeletes (a))
+    {
+        cout << "tokeletes";
+    }
+    else
+    {
+        cout << "nem tokeletes";
+    }
+    return 0;
+    // cout << boolalpha << tokeletes (a) << noboolalpa;
+}

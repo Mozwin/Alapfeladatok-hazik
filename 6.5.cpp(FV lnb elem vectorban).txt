@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 6.5) Valósítsd meg az int max(vector<int> v) függvényt, ami a paraméterül kapott vektor elemei közül a legnagyobbat adja vissza
+
+int max(vector<int> v)
+{
+    int lnb = 0;
+    for (unsigned i = 0; i<v.size(); i++) // mivel a v.size() egy elõjel nélküli értéket ad vissza, i is unsigned kell legyen 
+    {
+        if (v[i]>lnb)
+        {
+            lnb = v[i];
+        }
+    }
+    return (lnb);
+}
+
+int main()
+{
+    vector <int> a = {5, 3, 34, 34, 2, 6};
+    cout << max(a);
+    return 0;
+}

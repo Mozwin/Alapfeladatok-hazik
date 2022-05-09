@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+// 2.11) Számítsd ki egy szám faktoriálisát.
+
+int main()
+{
+    unsigned int n;
+    cout << "Adj meg egy természetes számot: " << endl;
+    cin >> n;
+
+    unsigned int fact = 1;
+
+    for(int i = 1; i <= n; ++i)
+    {
+        fact *= i;
+    }
+
+    cout << fact;
+    return 0;
+}

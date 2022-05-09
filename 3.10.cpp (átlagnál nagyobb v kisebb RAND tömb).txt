@@ -1,0 +1,40 @@
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+
+using namespace std;
+
+// 3.10) Add meg egy egész számsorról, hogy hány eleme nagyobb ill. kisebb az átlagnál.
+
+int main()
+{
+    srand(time (0));
+    int a;
+    cin >> a;
+
+    int b[a];
+    int avg = 0, kb = 0, nb = 0;
+    for (int i=0; i<a; i++)
+    {
+        b[i] = rand() % 10;
+        cout << b[i] << ' ';
+        avg += b[i];
+    }
+    avg = avg / a;
+    cout << endl << endl << "atlag: " << avg << endl << endl;
+
+    for (int i=0; i<a; i++)
+    {
+        if (b[i] < avg)
+        {
+            kb += 1;
+        }
+        else if (b[i] > avg)
+        {
+            nb += 1;
+        }
+    }
+    cout << "nagyobb (db): " << kb << endl;
+    cout << "kisebb (db): " << nb;
+    return 0;
+}

@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+// 1.20) Egy tetszõleges szót alakíts át úgy, hogy nagybetûvel kezdõdjön.
+
+int main()
+{
+    string a;
+    cin >> a;
+    if (a[0] == tolower (a[0]))
+    {
+        a[0] = toupper (a[0]);
+    }
+    cout << a;
+    return 0;
+}

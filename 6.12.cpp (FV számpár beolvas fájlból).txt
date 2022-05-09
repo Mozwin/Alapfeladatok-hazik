@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+// 6.12) Valósítsd meg a void szamparbeolvas(ifstream &f, int &a, int &b) függvényt, ami a kapott fájlból számpárt olvas be.
+
+void szamparbeolvas (ifstream& f, int& a, int& b)
+{
+    while (f.good())
+    {
+        f >> a >> b;
+        cout << a << " " << b << endl;
+    }
+}
+
+int main()
+{
+    ifstream bf ("szampar.txt");
+    if (!bf.good())
+    {
+        cout << "Nem sikerült megnyitni a fajlt.";
+        return 0;
+    }
+    int a, b;
+    szamparbeolvas(bf, a, b);
+
+    return 0;
+}

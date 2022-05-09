@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+// 1.3a)Döntsd el egy koordinátákkal adott pontról, hogy az origó-e.
+
+int main()
+{
+    int a;
+    int b;
+    bool origo;
+    cin >> a >> b;
+    if (a == 0 && b == 0)
+    {
+        origo = true;
+    }
+    else
+    {
+        origo = false;
+    }
+    cout << origo;
+    return 0;
+}

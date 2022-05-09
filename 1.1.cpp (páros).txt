@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+// 1.1) Döntsd el egy egész számról, hogy páros-e.
+
+int main()
+{
+    int a;
+    cin >> a;
+    if (a % 2 == 0)
+    {
+        cout << "paros" << endl;
+    }
+    else
+    {
+        cout << "paratlan" << endl;
+    }
+
+    return 0;
+}

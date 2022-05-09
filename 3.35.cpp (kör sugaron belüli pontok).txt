@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// 3.35) Tetszõleges, koordinátákkal adott pontsorozatból add meg, hogy mennyi esik az origó körüli R sugarú körön belülre.
+
+int main()
+{
+    int r;
+    cin >> r;
+    int p1, p2;
+    int d;
+    int db = 0;
+    for (int i= 0; i < 3; i++)
+    {
+        cin >> p1 >> p2;
+        d = sqrt(pow(p1, 2) + pow(p2, 2));
+        if  (r>d)
+        {
+            db += 1;
+        }
+    }
+    cout << db;
+    return 0;
+}

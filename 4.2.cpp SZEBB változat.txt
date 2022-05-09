@@ -1,0 +1,81 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+// 4.2) Adott egy telefonkönyv egy szövegfájlban, aminek a sorai vesszovel elválasztott neveket és telefonszámokat tartalmaznak.
+// a. Egy tetszoleges névhez add meg a telefonszámot.
+// b. Egy tetszoleges telefonszámhoz add meg a nevet.
+
+struct adatok
+{
+    string nev, szam;
+};
+
+adatok beolvas (ifstream& f)
+{
+    adatok a = {"", ""};
+    getline (f, a.nev,',');
+    f >> a.szam;
+    cout << a.nev << ' ' << a.szam;
+    return a;
+}
+
+void steck (ifstream& f, vector<adatok>& A)
+{
+    while (f.good())
+    {
+        A.push_back (beolvas(f));
+    }
+    f.close();
+}
+
+void t_nev (vector <adatok> a)
+{
+    string nev;
+    string szam = "nincs";
+    getline (cin, nev);
+    for (unsigned i = 0; i < a.size(); i++)
+    {
+        if (nev == a[i].nev)
+        {
+            szam = a[i].szam;
+        }
+    }
+    cout << szam << endl;
+}
+
+void t_szam (vector <adatok> a)
+{
+    string szam;
+    string nev = "nincs" ;
+    getline(cin, szam);
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (szam == a[i].szam)
+        {
+            nev = a[i].nev;
+        }
+    }
+    cout << nev << endl;
+}
+
+int main()
+{
+    ifstream f;
+    f.open("tkonyv.txt");
+    if (!f.good())
+    {
+        cerr << "Nem sikerult megynitni.";
+        return 0;
+    }
+
+    vector <adatok> A;
+    steck (f, A);
+
+    t_nev (A);
+    t_szam (A);
+
+    return 0;
+}

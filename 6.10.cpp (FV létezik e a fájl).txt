@@ -1,0 +1,34 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+// 6.10) Valósítsd meg az int hanysor(string fajlnev) függvényt, ami a paraméterként megkapott fájlnévhez tartozó fájlt megpróbálja megnyitni, ha nem létezik a fájl, akkor -1-et ad vissza, egyébként pedig a fájlban található sorok számát.
+
+int hanysor (string cica)
+{
+    ifstream bf;
+    string a;
+    int sum = 0;
+    bf.open ("cica.txt");
+    if (bf.is_open())
+    {
+        while (bf.good())
+        {
+            sum += 1;
+            getline (bf, a);
+        }
+    }
+    else
+    {
+        sum = -1;
+    }
+    return (sum);
+}
+
+int main()
+{
+    string cica;
+    cout << hanysor (cica);
+    return 0;
+}

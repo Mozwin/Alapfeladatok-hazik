@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+// 3.18) Add meg egy tetszõleges egész számsorban a prímszámok számát.
+
+int main()
+{
+    int a;
+    cin >> a;
+
+    int b[a];
+    int pdb = 0;
+    int odb;
+    for (int i = 0; i<a; i++)
+    {
+        cin >> b[i];
+        odb = 0;
+        for (int j = 2; j < b[i]; j++)
+        {
+            if (b[i] % j == 0)
+            {
+                odb += 1;
+            }
+        }
+        if (odb == 0)
+        {
+            pdb += 1;
+        }
+    }
+    cout << pdb;
+    return 0;
+}

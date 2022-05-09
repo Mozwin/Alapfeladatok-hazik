@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+// 3.3) Add meg egy tetszõleges egész szám valódi osztóinak a számát.
+
+int main()
+{
+    int a;
+    cin >> a;
+    int db = 0;
+
+    for (int i = 2; i < a; i++)
+    {
+        if (a % i == 0)
+        {
+            db += 1;
+        }
+    }
+    cout << db;
+    return 0;
+}

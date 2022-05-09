@@ -1,0 +1,32 @@
+﻿#include <iostream>
+
+using namespace std;
+
+// 2.10a) Add meg a Pascal-háromszög N-dik sorát.
+
+unsigned int factorial (int x)
+{
+    unsigned int fact = 1;
+
+    for(int i = 1; i <=x; ++i)
+    {
+        fact *= i;
+    }
+
+    return fact;
+}
+
+int main()
+{
+    unsigned int n;
+    cout << "Add meg hanyadik sort kéred: " << endl;
+    cin >> n;
+
+
+    for (int k = 0; k <= n-1; ++k)
+    {
+        cout << factorial(n-1)/(factorial(n-1-k)*factorial(k)) << " ";
+    }
+
+    return 0;
+}

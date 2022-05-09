@@ -1,0 +1,41 @@
+#include <iostream>
+#include <time.h>
+#include <cmath>
+
+using namespace std;
+
+// 5.3b) Vektor varianciája (átlagtól való négyzetes eltérések átlaga)
+
+int main()
+{
+    srand (time(0));
+
+    int a;
+    cin >> a;
+    cout << endl;
+
+    int b[a];
+    float sum = 0;
+    float avg = 0;
+    int var = 0;
+    for (int i=0; i<a; i++)
+    {
+        b[i] = rand() % 10;
+        sum += b[i];
+        cout << b[i] << endl;
+    }
+    cout << endl << sum << endl << endl;
+
+    avg = sum / a;
+    cout << avg << endl;
+
+    for (int i=0; i<a; i++)
+    {
+        var += pow(b[i]-avg,2);
+    }
+    var = var / a;
+    cout << var;
+
+    return 0;
+}
+

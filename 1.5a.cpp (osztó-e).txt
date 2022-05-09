@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+//  1.5a) Döntsd el két egész számról, hogy az elsõ osztója-e a másodiknak.
+
+int main()
+{
+    int a;
+    int b;
+    cin >> a >> b;
+    if (b % a == 0)
+    {
+        cout << "igaz";
+    }
+    else
+    {
+        cout << "hamis";
+    }
+    return 0;
+}

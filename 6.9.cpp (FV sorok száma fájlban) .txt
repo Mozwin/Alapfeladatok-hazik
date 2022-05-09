@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+//  6.9) Valósítsd meg az int hanysor(ifstream &f) függvényt, ami egy paraméterül kapott fájlban levõ maradék sorok számát adja vissza (frissen nyitott fájl esetén ez az összes sor)
+
+int hanysor (ifstream &f)
+{
+    string a;
+    int sum = 0;
+    while (f.good())
+    {
+        sum += 1;
+        getline (f, a);
+    }
+    return (sum);
+}
+
+int main()
+{
+    ifstream bf;
+    string asd;
+    bf.open ("asd.txt");
+    cout << hanysor (bf);
+    bf.close();
+    return 0;
+}

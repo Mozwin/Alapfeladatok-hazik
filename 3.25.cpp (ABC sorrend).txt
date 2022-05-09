@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+// 3.25) Döntsd el egy tetszõleges szövegrõl, hogy a sorai ABC-sorrendben vannak-e.
+
+int main()
+{
+    string a, b = "";
+    int i;
+    cin >> i;
+    bool jo = true;
+    while (i>=0 && jo)
+    {
+        getline(cin, a);
+        if (a<b)
+        {
+            jo = false;
+        }
+        b = a;
+        i = i-1;
+    }
+    cout << boolalpha << jo << noboolalpha;
+
+    return 0;
+}

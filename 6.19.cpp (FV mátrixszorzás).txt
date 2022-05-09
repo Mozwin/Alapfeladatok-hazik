@@ -1,0 +1,75 @@
+﻿#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 6.19) Valósítsd meg a mátrixszorzás mûveletet függvényként
+
+vector < vector<int> > beolvas (int n, int m)
+{
+    int szam;
+    vector < vector<int> > a;
+    for (int i = 0; i < n; i++)
+    {
+        vector <int> b;
+        for (int j = 0; j < m; j++)
+        {
+            cin >> szam;
+            b.push_back(szam);
+        }
+        a.push_back(b);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return a;
+}
+
+void szorzat (vector < vector<int> > a, vector < vector<int> > b, int k, int m, int n)
+{
+    int c[k][n];
+    cout << "A szorzat: " << endl;
+    for (int i = 0; i < k; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            int sum = 0;
+            for (int p = 0; p < m; p++)
+            {
+                sum += a[i][p] * b[p][j];
+            }
+            c[i][j] = sum;
+            cout << c[i][j] << ' ';
+        }
+        cout << endl;
+    }
+}
+
+int main()
+{
+    int k, l, m, n;
+    cout << "Add meg az elsõ mátrix méretét (kxm)" <<  endl;
+    cin >> k >> l;
+    cout << "Add meg a második mátrix méretét (mxn)" << endl;
+    cin >> m >> n;
+
+    if (l != m)
+    {
+        cout << "Nem lehet osszeszorozni";
+        return 0;
+    }
+
+    cout << "Adj meg egy kxm-es matrixot" << endl;
+    vector < vector<int> > A = beolvas (k, m);
+
+    cout << "Adj meg egy mxn-es matrixot" << endl;
+    vector < vector<int> > B = beolvas (m, n);
+
+    szorzat (A, B, k, m, n);
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// 6.13) Valósíts meg függvényt, ami kap három számot, amik egy háromszög három oldalhossza, és megadja a háromszög három magasságának hosszait
+
+void magassag (float& a, float& b, float& c)
+{
+    float s = (a + b + c)/2;
+    float T = sqrt(s * (s-a) * (s-b) * (s-c));
+    a = (2 * T) / a;
+    b = (2 * T) / b;
+    c = (2 * T) / c;
+    cout << a << endl << b << endl << c;
+    return;
+}
+
+int main()
+{
+    float a, b, c;
+    cin >> a >> b >> c;
+    magassag (a,b,c);
+    return 0;
+}

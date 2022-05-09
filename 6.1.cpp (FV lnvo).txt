@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+// 6.1) Valósítsd meg az int valodi(int a) függvényt, ami a legnagyobb valódi osztót adja vissza.
+
+int valodi(int a)
+{
+    int eredmeny = -1;
+    for (int i=2; i<a; i++)
+    {
+        if (a % i == 0)
+        {
+            eredmeny = i;
+        }
+    }
+    return eredmeny;
+}
+
+int main()
+{
+    int szam;
+    int lnvo;
+    cout << "adj meg egy természetes számot" << endl;
+    cin >> szam;
+    lnvo = valodi (szam);
+    cout << lnvo;
+
+    return 0;
+}

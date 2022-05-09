@@ -1,0 +1,133 @@
+﻿#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+//  4.4) Adott egy szövegfájl, ami egy hónap minden napjának hõmérsékleti adatait tartalmazza: minden sorban három szám van, egy napon mért reggeli, déli és esti hõmérséklet. 
+/*
+	a. Add meg a havi átlaghőmérsékletet.
+	b. Add meg a legalacsonyabb napi középhőmérsékletet (és azt is, hogy hányadik napon volt).
+	c. Add meg, hány reggel volt fagy.
+	d. Add meg, melyik napon volt a legnagyobb hőmérséklet-ingadozás.
+*/
+
+struct homerseklet
+{
+    int r, d, e;
+};
+
+homerseklet beolvas (ifstream& f)
+{
+    homerseklet h = {0,0,0};
+    f >> h.r >> h.d >> h.e;
+    return h;
+}
+
+vector <homerseklet> h_halmaz (ifstream& f)
+{
+    vector <homerseklet> h_halmaz;
+    while (f.good())
+    {
+        h_halmaz.push_back(beolvas(f));
+    }
+    return h_halmaz;
+}
+
+void atlag (vector<homerseklet> h)
+{
+    double avg = 0;
+    for (unsigned i = 0; i < h.size(); i++)
+    {
+        avg += h[i].r + h[i].d + h[i].e;
+    }
+    cout << avg << endl;
+    cout << h.size() << endl;
+    avg = avg / (h.size()*3);
+    cout << avg << endl;
+}
+
+void minkozep (vector <homerseklet> h)
+{
+    int nap;
+    double avg;
+    double avg_min = 100;
+    for (unsigned i = 0; i < h.size(); i++)
+    {
+        avg = (h[i].r + h[i].d + h[i].e)/3;
+        if (avg < avg_min)
+        {
+            avg_min = avg;
+            nap = i+1;
+        }
+    }
+    cout << avg_min << endl << nap << endl;
+}
+
+void fagy (vector <homerseklet> h)
+{
+    int sum = 0;
+    for (unsigned i = 0; i < h.size(); i++)
+    {
+        if (h[i].r < 0)
+        {
+            sum += 1;
+        }
+    }
+    cout << sum;
+}
+
+void ingadozas (vector <homerseklet> h)
+{
+    int nap;
+    int ing_max = 0;
+    for (unsigned i = 0; i < h.size(); i++)
+    {
+        int nap_min = 100;
+        int nap_max = -100;
+        int ing;
+        vector <int> a;
+        a.push_back(h[i].r);
+        a.push_back(h[i].d);
+        a.push_back(h[i].e);
+        for (int j = 0; j < a.size(); j++)
+        {
+            if (a[j]<nap_min)
+            {
+                nap_min = a[j];
+            }
+            if (a[j]>nap_max)
+            {
+                nap_max = a[j];
+            }
+        }
+        ing = nap_max - nap_min;
+
+        if (ing > ing_max)
+        {
+            ing_max = ing;
+            nap = i+1;
+        }
+    }
+    cout << nap << ing_max << endl;
+}
+
+int main()
+{
+    ifstream bf;
+    bf.open ("homerseklet.txt");
+    if (!bf.good())
+    {
+        cout << "Nem sikerult megnyitni a fajlt.";
+        return 0;
+    }
+    vector <homerseklet> H = h_halmaz (bf);
+
+    atlag (H);
+    minkozep (H);
+    fagy (H);
+    ingadozas (H);
+
+    bf.close();
+    return 0;
+}

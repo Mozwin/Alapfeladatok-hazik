@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+// 1.2) Döntsd el egy tetszõleges számról, hogy egy adott intervallumba esik-e.
+
+int main()
+{
+    int a = 1;
+    int b = 15;
+    float c;
+    cin >> c;
+    if (a<c && c<b)
+    {
+        cout << "igaz" << endl;
+    }
+    else
+    {
+        cout << "hamis" << endl;
+    }
+    return 0;
+}

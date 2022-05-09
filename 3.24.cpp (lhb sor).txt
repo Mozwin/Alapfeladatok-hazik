@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+// 3.24) Add meg egy tetszõleges szövegbõl a leghosszabb sort.
+
+int main()
+{
+    string lhb  = "", txt;
+    int i;
+    cin >> i;
+    while (i>=0)
+    {
+        getline(cin, txt);
+        if (txt.length() > lhb.length())
+        {
+            lhb = txt;
+        }
+        i = i-1;
+    }
+    cout << lhb;
+    return 0;
+}

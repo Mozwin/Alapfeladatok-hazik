@@ -1,0 +1,18 @@
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+// Véletlen tömb: egy tömb elemeit töltsd fel véletlen számokkal
+
+int main()
+{
+    srand (time(0));
+    int a[10];
+    for (int i=0; i<10; i++)
+    {
+        a[i] = rand() % 100;
+        cout << a[i] << ' ';
+    }
+    return 0;
+}

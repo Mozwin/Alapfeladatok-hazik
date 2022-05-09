@@ -1,0 +1,21 @@
+﻿#include <iostream>
+
+using namespace std;
+
+// 1.18) Döntsd el két szövegrõl, hogy megegyezik e az elsõ 5 karakterük.
+
+int main()
+{
+    string a, b;
+    getline (cin, a);
+    getline (cin, b);
+    if (a.substr(0,5) == b.substr(0,5))
+    {
+        cout << "igaz";
+    }
+    else
+    {
+        cout << "hamis";
+    }
+    return 0;
+}

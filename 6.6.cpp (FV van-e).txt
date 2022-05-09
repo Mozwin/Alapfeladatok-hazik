@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 6.6) Valósítsd meg a bool vane(vector<int> v, int ez) függvényt, ami eldönti, hogy a paraméterül kapott vektor elemei között van-e "ez".
+
+bool vane (vector <int> v, int ez)
+{
+    bool a = false;
+    for (unsigned i = 0; i < v.size(); i++)
+    {
+        if (v[i] == ez)
+        {
+            a = true;
+            break;  //ha talál egyezést befejezi a ciklust
+        }
+    }
+    return (a);
+}
+
+int main()
+{
+    vector <int> v = {22, 32, 54, 65, 211};
+    int a;
+    cin >> a;
+    cout << boolalpha << vane (v, a) << noboolalpha;
+    return 0;
+}

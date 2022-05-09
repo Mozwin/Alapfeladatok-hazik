@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+// 3.26a) Egy tetszõleges szövegben add meg a sorok számát.
+
+int main()
+{
+    string a;
+    int sum = 0;
+    getline(cin, a);
+    while (a.length() > 0)
+    {
+        sum += 1;
+        getline(cin, a);
+    }
+    cout << sum;
+    return 0;
+}

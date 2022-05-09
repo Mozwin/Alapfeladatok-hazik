@@ -1,0 +1,126 @@
+﻿#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+//4.1) Adott egy szövegfájl, ami egy recept hozzávalóit tartalmazza. A fájl minden sora egy számmal kezdõdik, ami egy összetevõbõl szükséges mennyiség, majd vesszõvel elválsztva tõle az összetevõ neve jön.
+
+// a) Add meg azt az összetevõt, amibõl a legtöbb, és amibõl a legkevesebb kell.
+// b) Add meg, hány olyan összetevõ van, amibõl kevesebb, mint egy egységnyi kell.
+// c) Add meg egy tetszõleges összetevõrõl, hogy mennyi kell belõle.
+
+struct hozzavalo
+{
+    double mennyiseg;
+    string nev;
+};
+
+hozzavalo beolvas_sor (ifstream& f)
+{
+   hozzavalo a = {0, ""};
+   char c;
+
+   f >> ws >> a.mennyiseg >> c >> ws;
+   getline (f, a.nev);
+   return a;
+}
+
+vector<hozzavalo> r_halmaz (ifstream& f)
+{
+   vector <hozzavalo> r_halmaz;
+
+   while(f.good())
+     {
+        r_halmaz.push_back (beolvas_sor(f));
+     }
+   return r_halmaz;
+}
+
+hozzavalo maxkeres (vector<hozzavalo> v1)
+{
+   hozzavalo maxi = {0, ""};
+
+   for (unsigned i = 0; i < v1.size(); i++)
+    {
+        if ( v1[i].mennyiseg > maxi.mennyiseg)
+        {
+            maxi = v1[i];
+        }
+    }
+    return maxi;
+}
+
+hozzavalo minkeres (vector<hozzavalo> v2)
+{
+   hozzavalo mini = {-1, ""};
+
+    for (unsigned i = 0; i < v2.size(); i++)
+     {
+        if ( mini.mennyiseg == -1 || v2[i].mennyiseg < mini.mennyiseg)
+        {
+            mini = v2[i];
+        }
+     }
+
+   return mini;
+}
+
+void kevesebb (vector <hozzavalo> r)
+{
+    int sum = 0;
+    for (unsigned i = 0; i < r.size(); i++)
+    {
+        if (r[i].mennyiseg < 1)
+        {
+            sum += 1;
+        }
+    }
+    cout << sum << endl;
+}
+
+void tetsz (vector <hozzavalo> r)
+{
+    string tetsz;
+    double tetsz_mennyiseg = 0;
+    cout << "Adj meg egy osszetevot: " << endl;
+    cin >> tetsz;
+    for (unsigned i = 0; i < r.size (); i++)
+    {
+        if (r[i].nev == tetsz)
+        {
+
+            tetsz_mennyiseg = r[i].mennyiseg;
+        }
+    }
+    cout << tetsz_mennyiseg << endl;
+
+}
+
+int main()
+{
+    ifstream bf;
+    bf.open("recept.txt");
+
+    if (!bf.good())
+    {
+       cout << "nem sikerult a megnyitas";
+       return 0;
+    }
+
+   vector <hozzavalo> recept = r_halmaz(bf);
+
+   hozzavalo h;
+
+   h = maxkeres(recept);
+   cout << h.nev << " " << h.mennyiseg << endl;
+
+   h = minkeres(recept);
+   cout << h.nev << " " << h.mennyiseg << endl;
+
+   kevesebb (recept);
+   tetsz (recept);
+
+   bf.close();
+   return 0;
+}

@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 6.8) Valósítsd meg az int hany(vector<double> v, double ez) függvényt, ami a paraméterül kapott vektorban megszámolja, hogy hány "ez" van benne
+
+int hany (vector <double> v, double ez)
+{
+    int sum = 0;
+    for (unsigned i = 0; i < v.size(); i++)
+    {
+        if (v[i] == ez)
+        {
+            sum += 1;
+        }
+    }
+    return (sum);
+}
+
+int main()
+{
+    vector <double> v = {22, 32, 32, 32, 54, 65, 211};
+    int a;
+    cin >> a;
+    cout << hany(v, a);
+    return 0;
+}

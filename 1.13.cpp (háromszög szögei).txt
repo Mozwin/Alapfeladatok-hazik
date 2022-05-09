@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// 1.13) Számítsd ki egy síkbeli koordinátákkal megadott háromszög szögeit.
+
+#define PI 3.14159265
+
+int main()
+{
+    int a1, a2;
+    int b1, b2;
+    int c1, c2;
+    float A, B, C, alpha, beta, gamma;
+    cin >> a1 >> a2;
+    cin >> b1 >> b2;
+    cin >> c1 >> c2;
+    // a skalárszorzat definíciójából: vect_a * vect_b = |a|*|b|*cos(alpha) = sum(a_i * b_i) --> cos(alpha) = (vect_a * vect_b)/(|a| * |b|)
+    A = ((c1-a1)*(b1-a1) + (c2-a2)*(b2-a2))/(sqrt(pow(c1-a1,2)+pow(c2-a2,2))*sqrt((pow(b1-a1,2)+pow(b2-a2,2))));
+    B = ((a1-b1)*(c1-b1) + (a2-b2)*(c2-b2))/(sqrt(pow(c1-b1,2)+pow(c2-b2,2))*sqrt((pow(a1-b1,2)+pow(a2-b2,2))));
+    C = ((a1-c1)*(b1-c1) + (a2-c2)*(b2-c2))/(sqrt(pow(a1-c1,2)+pow(a2-c2,2))*sqrt((pow(b1-c1,2)+pow(b2-c2,2))));
+    alpha = acos (A);
+    beta = acos (B);
+    gamma = acos (C);
+    // konvertálás fokba: rad/PI = deg/180 --> deg = rad*180/PI
+    cout << alpha *180/PI << endl;
+    cout << beta *180/PI << endl;
+    cout << gamma *180/PI << endl;
+
+    return (0);
+}

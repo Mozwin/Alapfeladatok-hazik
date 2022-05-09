@@ -1,0 +1,59 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void kiiro(vector<int>& v){//itt nem fontos a referencia
+    for(unsigned i = 0; i < v.size(); i++){
+        cout << v[i] << ", ";
+    }
+    cout << endl;
+}
+
+void rendezes(vector<int>& v){//itt fontos a referencia
+
+    ///1-tõl megy
+    for(unsigned i = 1; i < v.size(); i++){
+        if(v[i-1] > v[i]){
+            //csere
+            int seged = v[i-1];
+            v[i-1] = v[i];
+            v[i] = seged;
+            i = 0;
+        }
+    }
+}
+
+int main(){
+    vector<int> v {3,7,5,9,2,1,6,8,4,0};
+
+    cout << "Elotte: ";
+    kiiro(v);
+
+    rendezes(v);
+
+    cout << "utana: ";
+    kiiro(v);
+    return 0;
+}
+
+------------------------------------------------------------------------------------------
+
+vector <int> rendez (vector<int> v)
+{
+    for (int i = 1; i < v.size(); i++)
+    {
+        if (v[i-1] > v[i])
+        {
+            int seged = v[i-1];
+            v[i-1] = v[i];
+            v[i] = seged;
+            i = 0;
+        }
+    }
+}
+
+int main()
+{
+     vector <int> rendezett = rendez (v);
+}

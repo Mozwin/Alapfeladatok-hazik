@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+// 6.4) Valósítsd meg a bool baratsagos(int a, int b) függvényt, ami visszaadja, hogy a paraméterül kapott értékek barátságos számpárt alkotnak-e. (Olyan számpárok, amelyekre igaz, hogy az egyik szám önmagánál kisebb osztóinak összege a másik számmal egyenlõ és fordítva)
+
+bool baratsagos (int a, int b)
+{
+    int sum1 = 0, sum2 = 0;
+    for (int i = 1; i < a; i++)
+    {
+        if (a % i == 0)
+        {
+            sum1 += i;
+        }
+    }
+    for (int i = 1; i < b; i++)
+    {
+        if (b % i == 0)
+        {
+            sum2 += i;
+        }
+    }
+    return (sum1 == b && sum2 == a);
+}
+
+int main()
+{
+    int a,b;
+    cin >> a >> b;
+    bool res = baratsagos (a, b);
+    cout << boolalpha << res << noboolalpha;
+
+    return 0;
+}

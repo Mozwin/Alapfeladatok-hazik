@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+// 1.10) Számítsd ki két térvektor vektoriális szorzatát (koordináták használatával).
+
+int main()
+{
+    int a1, a2, a3;
+    int b1, b2, b3;
+    int c1, c2, c3;
+    cin >> a1 >> a2 >> a3;
+    cin >> b1 >> b2 >> b3;
+    c1 = a2 * b3 - a3*b2;
+    c2 = a1 * b3 - a3 * b1;
+    c3 = a1 * b2 - a2 * b1;
+    cout << c1 << c2 << c3;
+    return 0;
+}
